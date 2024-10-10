@@ -1,35 +1,81 @@
-// CatalogHeader.js
-import React from 'react';
-import { Box, Flex, Text, Button, Spacer, Input, InputGroup, InputRightElement } from '@chakra-ui/react';
-import { SearchIcon } from '@chakra-ui/icons';
+import React, { memo, useEffect, useState } from 'react';
+import { Box, Flex, Button, Spacer, Image, IconButton, Text } from '@chakra-ui/react';
+import { FaBell, FaShoppingCart, FaCog } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
+import './CatalogHeader.css';
 
 const CatalogHeader = () => {
+  const [user, setUser] = useState(null);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Перевірка авторизації користувача
+    axios.get('http://localhost:5001/api/auth/user', { withCredentials: true })
+      .then(response => setUser(response.data))
+      .catch(() => setUser(null));
+  }, []);
+
+  const handleSteamLogin = () => {
+    window.location.href = 'http://localhost:5001/auth/steam'; // URL для авторизації через Steam на бекенді
+  };
+
+  const handleLogout = () => {
+    axios.post('http://localhost:5001/api/auth/logout', {}, { withCredentials: true })
+      .then(() => setUser(null))
+      .catch(error => console.error('Logout error', error));
+  };
+
   return (
-    <Box bg="teal.500" p={4} color="white">
-      <Flex alignItems="center">
+    <Box className="catalog-header" padding="10px" backgroundColor="#5e4305">
+      <Flex alignItems="center" className="header-flex">
         {/* Логотип */}
-        <Text fontSize="2xl" fontWeight="bold">Dota Market</Text>
+        <Box className="header-logo" width="150px">
+          <Image src="/path/to/logo.png" alt="Dota2 Market Logo" className="logo-img" />
+        </Box>
 
         <Spacer />
 
-        {/* Поле пошуку */}
-        <InputGroup size="md" w="40%">
-          <Input placeholder="Пошук товарів..." borderRadius="md" />
-          <InputRightElement>
-            <Button size="sm" bg="teal.700" color="white">
-              <SearchIcon />
-            </Button>
-          </InputRightElement>
-        </InputGroup>
+        {/* Меню */}
+        <Flex className="header-menu">
+          <Button className="menu-item" variant="ghost" color="white" fontWeight="bold" onClick={() => navigate('/')}>Купити</Button>
+          <Button className="menu-item" variant="ghost" color="white" fontWeight="bold" onClick={() => navigate('/inventory')}>Мої речі</Button>
+          <Button className="menu-item" variant="ghost" color="white" fontWeight="bold">Як це працює</Button>
+          <Button className="menu-item" variant="ghost" color="white" fontWeight="bold">Техпідтримка</Button>
+        </Flex>
 
         <Spacer />
 
-        {/* Кнопки */}
-        <Button bg="white" color="teal.500" borderRadius="md" mx={2} _hover={{ bg: 'teal.600', color: 'white' }}>Увійти</Button>
-        <Button bg="teal.700" color="white" borderRadius="md" mx={2} _hover={{ bg: 'teal.600' }}>Зареєструватися</Button>
+        {/* Вибір мови */}
+        <Box className="language-select-wrapper" position="relative" width="100px">
+          <select className="language-select" defaultValue="RU">
+            <option value="ru">RU</option>
+            <option value="ua">UA</option>
+            <option value="en">EN</option>
+          </select>
+        </Box>
+
+        <Spacer />
+
+        {/* Інші елементи праворуч */}
+        <Flex alignItems="center" className="header-right-icons">
+          {user ? (
+            <>
+              <IconButton icon={<FaBell />} className="header-icon" aria-label="Notifications" variant="ghost" color="white" />
+              <IconButton icon={<FaShoppingCart />} className="header-icon" aria-label="Cart" variant="ghost" color="white" />
+              <IconButton icon={<FaCog />} className="header-icon" aria-label="Settings" variant="ghost" color="white" />
+              <Text className="user-balance" color="white" ml={4} fontWeight="bold">{user.balance} $</Text>
+              <Text className="username" color="white" ml={4} fontWeight="bold">{user.displayName}</Text>
+              <Image src={user.avatar} alt="User Avatar" boxSize="40px" borderRadius="full" ml={4} />
+              <Button className="menu-item" variant="ghost" color="white" fontWeight="bold" ml={4} onClick={handleLogout}>Вийти</Button>
+            </>
+          ) : (
+            <Button className="menu-item" variant="ghost" color="white" fontWeight="bold" onClick={handleSteamLogin}>Авторизація через Steam</Button>
+          )}
+        </Flex>
       </Flex>
     </Box>
   );
 };
 
-export default CatalogHeader;
+export default memo(CatalogHeader);

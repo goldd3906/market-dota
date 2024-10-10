@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Box, Grid, Image, Text, Stack, Checkbox, Slider, Button, Select, Heading, Input } from '@chakra-ui/react';
+import { Box, Grid, Image, Text, Stack, Checkbox, Slider, Button, Heading, Input } from '@chakra-ui/react';
 
 const items = [
   { id: 1, name: 'Item 1', rarity: 'common', price: 10, image: '/path/to/image1.jpg' },

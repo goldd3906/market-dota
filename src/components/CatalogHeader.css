@@ -1,0 +1,70 @@
+.catalog-header {
+    padding: 10px;
+    background-color: #5e4305;
+    width: 100%;
+    margin: 0 auto; /* Центрування хедера */
+  }
+  
+  .header-flex {
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  .header-logo {
+    width: 150px;
+  }
+  
+  .logo-img {
+    max-width: 100%;
+  }
+  
+  .header-menu {
+    display: flex;
+    gap: 15px;
+  }
+  
+  .menu-item {
+    color: white;
+    font-weight: bold;
+    background-color: #333;
+    font-size: 16px;
+    padding: 5px 15px;
+    transition: background-color 0.3s;
+  }
+  
+  .menu-item:hover {
+    background-color: #ffc107; /* Жовтий колір для наведення */
+  }
+  
+  .language-select-wrapper {
+    width: 80px;
+  }
+  
+  .language-select {
+    width: 100%;
+    color: white;
+    background-color: #333;
+    border-color: #333;
+  }
+  
+  .header-right-icons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  
+  .header-icon {
+    color: white;
+    background-color: #333;
+    font-size: 20px;
+  }
+  
+  .user-balance,
+  .username {
+    color: white;
+    font-weight: bold;
+    margin-left: 10px;
+  }
+  

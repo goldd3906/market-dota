@@ -1,0 +1,349 @@
+/* Загальні стилі для TradeInventoryPage */
+.trade-inventory-page {
+  background-color: #0a1f44;
+  padding: 16px;
+}
+
+.inventory-heading {
+  color: white;
+  margin-bottom: 24px;
+  text-align: left;
+  display: inline-block;
+}
+
+.inventory-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.inventory-button {
+  background-color: #ffc107;
+  color: #0a1f44;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+  margin-left: auto;
+}
+
+.inventory-button:hover {
+  background-color: #e6a700;
+}
+
+.trade-link-container {
+  margin-bottom: 16px;
+  align-items: center;
+}
+
+.trade-link-label {
+  color: white;
+  margin-right: 16px;
+}
+
+.trade-link-input {
+  width: 400px;
+  color: white;
+  background-color: #123165;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+}
+
+.update-inventory-button {
+  margin-left: 16px;
+  background-color: #ffc107;
+  color: #0a1f44;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.update-inventory-button:hover {
+  background-color: #e6a700;
+}
+
+.loading-spinner {
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.inventory-grid {
+  margin-top: 16px;
+  gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+}
+
+.inventory-item {
+  border: 1px solid #1a3a6b;
+  border-radius: 8px;
+  overflow: hidden;
+  padding: 16px;
+  background-color: #123165;
+}
+
+.inventory-item-image {
+  width: 100%;
+  height: auto;
+}
+
+.inventory-item-name {
+  margin-top: 8px;
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: white;
+  text-align: center;
+}
+
+.purchase-history-container {
+  margin-top: 40px;
+}
+
+.purchase-history-heading {
+  color: white;
+  margin-bottom: 16px;
+}
+
+.purchase-history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.purchase-history-item {
+  padding: 16px;
+  border: 1px solid #1a3a6b;
+  border-radius: 8px;
+  background-color: #123165;
+}
+
+.purchase-history-text {
+  color: white;
+}
+
+.no-purchase-history {
+  color: white;
+}
+
+.error-message {
+  color: red;
+  margin-top: 8px;
+}
+
+.modal-content {
+  background-color: white;
+  width: 50%;
+  height: 50%;
+  overflow-y: auto;
+  margin: auto;
+  border-radius: 8px;
+  position: relative;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  color: #0a1f44;
+}
+
+.inventory-modal-content {
+  width: 60% !important;
+  height: 60% !important;
+}
+
+.inventory-modal-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.inventory-modal-header {
+  width: 80%;
+  font-weight: bold;
+}
+
+.inventory-modal-close-button {
+  position: relative;
+  top: 0;
+}
+
+.inventory-modal-content {
+  background-color: white;
+  max-width: 60%;
+  max-height: 60%;
+  margin: auto;
+  overflow: hidden;
+}
+
+.inventory-modal-body {
+  max-height: calc(80vh - 120px);
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.inventory-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.css-72fd9l {
+  flex: 1 !important;
+}
+
+/* CSS стилі для модальних вікон (такі ж як для відображення інвентаря) */
+.inventory-modal-overlay,
+.price-modal-overlay,
+.edit-price-modal-overlay {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.inventory-modal-content,
+.price-modal-content,
+.edit-price-modal-content {
+  background-color: white;
+  max-width: 60%;
+  max-height: 60%;
+  margin: auto;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.inventory-modal-header,
+.price-modal-header,
+.edit-price-modal-header {
+  font-weight: bold;
+  padding: 16px;
+  border-bottom: 1px solid #e2e8f0;
+  background-color: #f7fafc;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inventory-modal-body,
+.price-modal-body,
+.edit-price-modal-body {
+  max-height: calc(60vh - 120px);
+  overflow-y: auto;
+  padding-right: 10px;
+}
+
+.inventory-modal-footer,
+.price-modal-footer,
+.edit-price-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+  padding: 20px;
+}
+
+.inventory-modal-close-button,
+.price-modal-close-button,
+.edit-price-modal-close-button {
+  position: absolute;
+  right: 16px;
+  top: 16px;
+}
+
+/* Додаткові стилі для нового модального вікна */
+.price-modal-label,
+.edit-price-modal-label {
+  font-weight: bold;
+}
+
+.price-modal-input,
+.edit-price-modal-input {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.commission-info {
+  font-size: 14px;
+  color: gray;
+}
+
+.sell-item-button {
+  background-color: #3182ce;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.sell-item-button:hover {
+  background-color: #2b6cb0;
+}
+
+.cancel-button {
+  background-color: transparent;
+  color: #4a5568;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.cancel-button:hover {
+  background-color: #e2e8f0;
+}
+
+.remove-from-sale-button,
+.edit-price-button {
+  background-color: #e53e3e;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.remove-from-sale-button:hover {
+  background-color: #c53030;
+}
+
+.edit-price-button {
+  background-color: #3182ce;
+}
+
+.edit-price-button:hover {
+  background-color: #2b6cb0;
+}
+
+.no-items-for-sale-message {
+  color: white;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+.inventory-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.inventory-button {
+  background-color: #ffc107;
+  color: #0a1f44;
+  padding: 8px 16px;
+  border-radius: 4px;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.inventory-button:hover {
+  background-color: #e6a700;
+}
+
+.items-for-sale-heading {
+  color: white;
+  font-weight: bold;
+}
